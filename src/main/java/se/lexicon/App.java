@@ -1,8 +1,12 @@
 package se.lexicon;
 
+import java.util.List;
 import java.util.Scanner;
 
+import se.lexicon.model.Person;
+
 import static se.lexicon.Exercises.*;
+
 
 
 public class App {
@@ -11,6 +15,30 @@ public class App {
 
     static {
         SCANNER = new Scanner(System.in);
+    }
+
+    public static void displayPeople(List<Person> people) {
+        for (Person person : people) {
+            System.out.println(person);
+        }
+    }
+
+    public static void displayPerson(Person person) {
+        if (person !=null) {
+            System.out.println(person.toString());
+        } else {
+            System.out.println("Person not found");
+        }
+    }
+
+    public static void displayString(String str) {
+        System.out.println(str);
+    }
+
+    public static void displayStrings(List<String> strings) {
+        for (String str : strings) {
+            System.out.println(str);
+        }
     }
 
     public static void main(String[] args) {
@@ -25,25 +53,32 @@ public class App {
                     done = true;
                     break;
                 case 1:
-                    exercise1(message + number);
+                    List<Person> eriks = exercise1(message + number);
+                    displayPeople(eriks);
                     break;
                 case 2:
-                    exercise2(message + number);
+                    List<Person> females = exercise2(message + number);
+                    displayPeople(females);
                     break;
                 case 3:
-                    exercise3(message + number);
+                    List<Person> bornAfter2000 = exercise3(message + number);
+                    displayPeople(bornAfter2000);
                     break;
                 case 4:
-                    exercise4(message + number);
+                    Person personWithId123 = exercise4(message + number);
+                    displayPerson(personWithId123);
                     break;
                 case 5:
-                    exercise5(message + number);
+                    String personWithId455String = exercise5(message + number);
+                    displayString(personWithId455String);
                     break;
                 case 6:
-                    exercise6(message + number);
+                    List<String> malesWithNamesStartingWithE = exercise6(message + number);
+                    displayStrings(malesWithNamesStartingWithE);
                     break;
                 case 7:
-                    exercise7(message + number);
+                    List<String> peopleBelowAge10 = exercise7(message + number);
+                    displayStrings(peopleBelowAge10);
                     break;
                 case 8:
                     exercise8(message + number);
@@ -55,13 +90,16 @@ public class App {
                     exercise10(message + number);
                     break;
                 case 11:
-                    exercise11(message + number);
+                    List<Person> sortedPeopleWithFirstNameA = exercise11(message + number);
+                    displayPeople(sortedPeopleWithFirstNameA);
                     break;
                 case 12:
-                    exercise12(message + number);
+                    List<Person> sortedPeopleBornBefore1950 = exercise12(message + number);
+                    displayPeople(sortedPeopleBornBefore1950);
                     break;
                 case 13:
-                    exercise13(message + number);
+                    List<Person> sortedPeople = exercise13(message + number);
+                    displayPeople(sortedPeople);
                     break;
             }
 
@@ -78,7 +116,7 @@ public class App {
         stringBuilder.append("2.\tFind all females in the collection using findMany().\n");
         stringBuilder.append("3.\tFind all who are born after (and including) 2000-01-01 using findMany().\n");
         stringBuilder.append("4.\tFind the Person that has an id of 123 using findOne().\n");
-        stringBuilder.append("5.\tFind the Person that has an id of 456 and convert to String with following content:\n" +
+        stringBuilder.append("5.\tFind the Person that has an id of 455 and convert to String with following content:\n" +
                 "            “Name: Nisse Nilsson born 1999-09-09”. Use findOneAndMapToString().\n");
         stringBuilder.append("6.\tFind all male people whose names start with “E” and convert each to a String using findManyAndMapEachToString().\n");
         stringBuilder.append("7.\tFind all people who are below age of 10 and convert them to a String like this:\n" +
